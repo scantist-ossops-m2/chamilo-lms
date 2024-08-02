@@ -272,7 +272,7 @@ foreach ($properties as $key => $value) {
                         $personalDataContent .= '<li>'.get_lang('NoData').'</li>';
                     } else {
                         foreach ($subValue as $subSubValue) {
-                            $personalDataContent .= '<li>'.$subSubValue.'</li>';
+                            $personalDataContent .= '<li>'.Security::remove_XSS($subSubValue).'</li>';
                         }
                     }
                     $personalDataContent .= '</ul>';
@@ -284,7 +284,7 @@ foreach ($properties as $key => $value) {
                     $personalDataContent .= '<li>'.get_lang('NoData').'</li>';
                 } else {
                     foreach ($value as $subValue) {
-                        $personalDataContent .= '<li>'.$subValue->variable.': '.$subValue->value.'</li>';
+                        $personalDataContent .= '<li>'.$subValue->variable.': '.Security::remove_XSS($subValue->value).'</li>';
                     }
                 }
                 $personalDataContent .= '</ul>';
@@ -305,7 +305,7 @@ foreach ($properties as $key => $value) {
                                 );
                                 $personalDataContent .= '<li>'.$documentLink.'</li>';
                             } else {
-                                $personalDataContent .= '<li>'.$subSubValue.'</li>';
+                                $personalDataContent .= '<li>'.Security::remove_XSS($subSubValue).'</li>';
                             }
                         }
                     }
@@ -325,7 +325,7 @@ foreach ($properties as $key => $value) {
                     $personalDataContent .= '<li>'.get_lang('NoData').'</li>';
                 } else {
                     foreach ($value as $subValue) {
-                        $personalDataContent .= '<li>'.$subValue.'</li>';
+                        $personalDataContent .= '<li>'.Security::remove_XSS($subValue).'</li>';
                     }
                 }
                 $personalDataContent .= '</ul>';
@@ -363,7 +363,7 @@ foreach ($properties as $key => $value) {
             $personalDataContent .= '<li>'.$key.': '.get_lang('ComplexDataNotShown').'</li>';
         }*/
     } else {
-        $personalDataContent .= '<li>'.$key.': '.$value.'</li>';
+        $personalDataContent .= '<li>'.$key.': '.Security::remove_XSS($value).'</li>';
     }
 }
 $personalDataContent .= '</ul>';
